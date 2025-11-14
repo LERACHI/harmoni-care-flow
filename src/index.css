@@ -176,4 +176,8 @@ All colors MUST be HSL.
       transform: translateY(-10px);
     }
   }
+  /* Corrige o conteúdo ficando escondido atrás do header fixo */
+.page-content {
+  padding-top: 90px; /* ajuste se seu header for maior/menor */
+}
 }
