@@ -1,0 +1,53 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Garanta que esta branch é a principal do seu código
+  # Permite executar o workflow manualmente
+  workflow_dispatch: 
+
+# Define permissões para a GITHUB_TOKEN poder fazer o deploy
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Recomendado usar a versão LTS atual
+          cache: 'npm' # Otimiza a instalação de dependências
+
+      - name: Install Dependencies 📥
+        run: npm install
+
+      - name: Build Project (Vite) 🏗️
+        run: npm run build
+
+      - name: Setup Pages 📄
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact 📦
+        # O Vite coloca o build final na pasta 'dist' por padrão
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' 
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
