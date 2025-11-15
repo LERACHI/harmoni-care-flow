@@ -109,87 +109,94 @@ const About = () => {
         </section>
 
         {/* Mission, Vision, Values */}
-        <section className="px-4 py-20">
-          <div className="container mx-auto max-w-6xl">
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                <CardContent className="pt-8 pb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-harmonize flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Target className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Facilitar o acesso a terapias integrativas de qualidade, promovendo o equilíbrio 
-                    e bem-estar de cada indivíduo através da tecnologia.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-harmonize/30">
-                <CardContent className="pt-8 pb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-harmonize to-accent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <TrendingUp className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Nossa Visão</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Ser a principal plataforma de referência em terapias integrativas, 
-                    transformando a forma como as pessoas cuidam da sua saúde integral.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/30">
-                <CardContent className="pt-8 pb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Award className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">Nossos Valores</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Integridade, excelência, acolhimento e transformação guiam cada decisão 
-                    e interação em nossa plataforma.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+<section className="px-4 py-20">
+  <div className="container mx-auto max-w-6xl">
+    <div className="grid md:grid-cols-3 gap-8">
+      
+      {/* CARD 1: Nossa Missão (Corrigido) */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
+        <CardContent className="pt-8 pb-8 text-center"> 
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-harmonize flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+            <Target className="w-7 h-7 text-primary-foreground" />
           </div>
-        </section>
+          <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Facilitar o acesso a terapias integrativas de qualidade, promovendo o equilíbrio 
+            e bem-estar de cada indivíduo através da tecnologia.
+          </p>
+        </CardContent>
+      </Card>
 
-        {/* Values Grid */}
-        <section className="px-4 py-20 bg-gradient-to-br from-muted/30 via-background to-muted/20">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                O que nos move
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Nossos princípios fundamentais que norteiam cada ação e decisão
+      {/* CARD 2: Nossa Visão (Corrigido) */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-harmonize/30">
+        <CardContent className="pt-8 pb-8 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-harmonize flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+            <TrendingUp className="w-7 h-7 text-primary-foreground" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">Nossa Visão</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Ser a principal plataforma de referência em terapias integrativas, 
+            transformando a forma como as pessoas cuidam da sua saúde integral.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* CARD 3: Nossos Valores (Corrigido) */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-border/50 hover:border-accent/30">
+        <CardContent className="pt-8 pb-8 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto">
+            <Award className="w-7 h-7 text-primary-foreground" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">Nossos Valores</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Integridade, excelência, acolhimento e transformação guiam cada decisão 
+            e interação em nossa plataforma.
+          </p>
+        </CardContent>
+      </Card>
+      
+    </div>
+  </div>
+</section>
+
+{/* Values Grid (Esta seção já estava centralizada globalmente) */}
+<section className="px-4 py-20 bg-gradient-to-br from-muted/30 via-background to-muted/20">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+        O que nos move
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Nossos princípios fundamentais que norteiam cada ação e decisão
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {values.map((value, index) => {
+        const Icon = value.icon;
+        return (
+          <Card 
+            key={index} 
+            className="group hover:shadow-lg transition-all duration-300 animate-slide-up border-border/50"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            {/* Se você quiser CENTRALIZAR o ícone e o texto dentro desses cards de valor, 
+                adicione text-center à CardContent e mx-auto ao div do ícone aqui também. */}
+            <CardContent className="pt-8 pb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-harmonize/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Icon className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{value.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                {value.description}
               </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {values.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <Card 
-                    key={index} 
-                    className="group hover:shadow-lg transition-all duration-300 animate-slide-up border-border/50"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <CardContent className="pt-8 pb-6">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-harmonize/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-3">{value.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed text-sm">
-                        {value.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
         {/* Team Section */}
         <section className="px-4 py-20">
