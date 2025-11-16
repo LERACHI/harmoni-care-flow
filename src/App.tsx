@@ -14,7 +14,7 @@ import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import About from "./pages/About";
 import Vagas from "./pages/vagas";
-import Contact from "./pages/contato";
+import Contact from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
