@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Users, ShoppingBag, MessageCircle, Sparkles, Shield } from "lucide-react";
+import { Heart, Users, ShoppingBag, MessageCircle, Sparkles, Shield, Users2Icon, Briefcase, } from "lucide-react";
 import heroImage from "@/assets/hero-illustration.jpg";
 import { NavLink } from "@/components/NavLink";
 
@@ -38,6 +38,17 @@ const Index = () => {
       title: "Cuidado Personalizado",
       description: "Cada pessoa é única, e seu tratamento também",
     },
+    {
+      icon: Briefcase,
+      title: "Envie sua Candidatura",
+      description: "Estamos em busca de terapeutas, profissionais de bem-estar e criadores apaixonados por cuidado e equilíbrio.",
+    },
+    {
+      icon: Users2Icon,
+      title: "Faça parte da nossa Comunidade",
+      description: "Um espaço para terapeutas, pacientes e colaboradores crescerem juntos, compartilharem vivências e promoverem o bem-estar.",
+    },
+    
   ];
 
   return (

@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Users, Target, Sparkles, Shield, Globe, Award, TrendingUp } from "lucide-react";
+import { Heart, Users, Target, Sparkles, Shield, Globe, Award, TrendingUp, Briefcase} from "lucide-react";
 
 const About = () => {
   const values = [
@@ -34,7 +34,12 @@ const About = () => {
       icon: Globe,
       title: "Acessibilidade",
       description: "Democratizamos o acesso a terapias integrativas através da tecnologia."
-    }
+    },
+    {
+      icon: Briefcase,
+      title: "Cultive o Bem-Estar",
+      description: "Oferecemos um espaço onde você também pode crescer, nutrir-se e florescer.",
+    },
   ];
 
   const stats = [
