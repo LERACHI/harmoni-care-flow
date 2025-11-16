@@ -25,7 +25,8 @@ const Navigation = () => {
     { name: "Chat", path: "/chat" },
     { name: "Conteúdos", path: "/content" },
     { name: "Sobre", path: "/about" },
-    { name: "Vagas", path: "/vagas" }, // << NOVO ITEM ADICIONADO AQUI
+    { name: "Vagas", path: "/vagas" },
+    { name: "Contato", path: "/contato" }, // << NOVO ITEM ADICIONADO AQUI
   ];
 
   return (

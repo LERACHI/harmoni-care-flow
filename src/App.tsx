@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import About from "./pages/About";
 import Vagas from "./pages/vagas";
+import Contact from "./pages/contato";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,7 +43,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
           {/* >>> NOVA ROTA AQUI <<< */}
   <Route path="/vagas" element={<Vagas />} />
-
+<Route path="/contato" element={<Contact />} />   {/* ← NOVA ROTA */}
   {/* *** SEMPRE POR ÚLTIMO *** */}
   <Route path="*" element={<NotFound />} />
         </Routes>

@@ -48,30 +48,31 @@ const Footer = () => {
 
           {/* Recursos */}
           <div>
-            <h3 className="font-semibold mb-4">Recursos</h3>
-            <ul className="space-y-2">
-              <li>
-                <NavLink to="/content" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Meus Conteúdos
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/profile" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Perfil
-                </NavLink>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Sobre Nós
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Contato
-                </a>
-              </li>
-            </ul>
-          </div>
+  <h3 className="font-semibold mb-4">Recursos</h3>
+  <ul className="space-y-2">
+    <li>
+      <NavLink to="/content" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+        Meus Conteúdos
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/profile" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+        Perfil
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+        Sobre Nós
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/contato" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+        Contato
+      </NavLink>
+    </li>
+  </ul>
+</div>
+
 
           {/* Contato */}
           <div>
