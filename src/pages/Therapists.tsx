@@ -166,11 +166,10 @@ const Therapists = () => {
 
                       {/* WhatsApp */}
                       <Button
-                        variant="outline"
                         size="icon"
                         onClick={() => window.open(whatsappUrl, "_blank")}
                       >
-                        <MessageCircle className="w-4 h-4" />
+                        <MessageCircle className="bg-green-500 text-white hover:bg-green-600 shadow-md hover:shadow-lg" />
                       </Button>
                     </div>
                   </CardContent>
