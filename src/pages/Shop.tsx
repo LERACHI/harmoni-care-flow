@@ -4,7 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star } from "lucide-react";
-
+import SessaodeAcumpultura from "@/assets/sessaoacum.jpeg";
+import ConsultaIndividualdeReiki from "@/assets/reiki.jpeg";
+import KitdeOleosEssenciais from "@/assets/oleo.jpeg";
 const Shop = () => {
   const products = [
     {
@@ -13,7 +15,7 @@ const Shop = () => {
       category: "Serviços",
       price: 150,
       rating: 4.9,
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop",
+      image: ConsultaIndividualdeReiki,
       description: "Sessão de 60 minutos de Reiki para equilíbrio energético",
     },
     {
@@ -31,7 +33,7 @@ const Shop = () => {
       category: "Produtos",
       price: 89,
       rating: 5.0,
-      image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=400&fit=crop",
+      image: KitdeOleosEssenciais,
       description: "5 óleos essenciais puros para aromaterapia",
     },
     {
@@ -49,7 +51,7 @@ const Shop = () => {
       category: "Serviços",
       price: 180,
       rating: 4.9,
-      image: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&h=400&fit=crop",
+      image: SessaodeAcumpultura,
       description: "Tratamento tradicional chinês com profissional certificado",
     },
     {
