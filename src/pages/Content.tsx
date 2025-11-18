@@ -6,6 +6,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Play, FileText, Image, Calendar } from "lucide-react";
 
+// Importe sua imagem local aqui
+import plantasMedicinalsImage from "@/assets/plantas.jpeg"; // Certifique-se de que o caminho está correto
+import ChakraseEnergiaImage from "@/assets/energia.jpeg";
 const Content = () => {
   const videos = [
     {
@@ -13,21 +16,24 @@ const Content = () => {
       title: "Introdução à Meditação Mindfulness",
       duration: "15:30",
       category: "Meditação",
-      thumbnail: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop",
+      thumbnail:
+        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop",
     },
     {
       id: 2,
       title: "Técnicas de Respiração para Ansiedade",
       duration: "10:45",
       category: "Bem-estar",
-      thumbnail: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=300&fit=crop",
+      thumbnail:
+        "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=300&fit=crop",
     },
     {
       id: 3,
       title: "Yoga para Iniciantes",
       duration: "25:00",
       category: "Yoga",
-      thumbnail: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=300&fit=crop",
+      thumbnail:
+        "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=300&fit=crop",
     },
   ];
 
@@ -66,13 +72,13 @@ const Content = () => {
       id: 2,
       title: "Chakras e Energia",
       category: "Energia",
-      url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+      url: ChakraseEnergiaImage,
     },
     {
       id: 3,
       title: "Plantas Medicinais",
       category: "Fitoterapia",
-      url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=300&fit=crop",
+      url: plantasMedicinalsImage, // Aqui usamos a imagem importada
     },
   ];
 
@@ -84,7 +90,10 @@ const Content = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12 animate-slide-up">
             <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-              Meus <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-transparent">Conteúdos</span>
+              Meus{" "}
+              <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-transparent">
+                Conteúdos
+              </span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Seu acervo pessoal de materiais e recursos para sua jornada
@@ -151,10 +160,14 @@ const Content = () => {
                           <span>{article.date}</span>
                         </div>
                       </div>
-                      <CardTitle className="text-lg mb-2">{article.title}</CardTitle>
+                      <CardTitle className="text-lg mb-2">
+                        {article.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-muted-foreground mb-4">{article.excerpt}</p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {article.excerpt}
+                      </p>
                       <Button variant="outline" className="w-full">
                         <FileText className="w-4 h-4 mr-2" />
                         Ler Artigo
