@@ -8,9 +8,9 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* HarmoniCare Design System - Soft & Welcoming Palette */
-    --background: 30 25% 97%;
-    --foreground: 25 15% 25%;
+    /* HarmoniCare Design System - PASTEL VIBES */
+  --background: 340 55% 92%;  /* NOVO FUNDO: Rosa Bebê Claríssimo (#f6dfdf) */
+  --foreground: 25 15% 25%;  /* Texto preto/marrom escuro (MANTIDO ESCURO) */
 
     --card: 0 0% 100%;
     --card-foreground: 25 15% 25%;
@@ -18,27 +18,31 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 25 15% 25%;
 
-    /* Primary - Sage Green (calming, natural) */
-    --primary: 150 25% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Lavanda (#b8b6dc) */
+  --primary: 244 45% 45%; 
+  --primary-foreground: 0 0% 100%; /* Texto escuro para contraste */
 
-    /* Secondary - Soft Lilac (empowerment, spirituality) */
-    --secondary: 280 35% 75%;
-    --secondary-foreground: 280 40% 20%;
+    /* Secondary - Verde Pistache (#cbd09e) - Usado para harmonia/suporte */
+  --secondary: 71 33% 71%; 
+  --secondary-foreground: 71 33% 20%;
 
-    /* Muted - Warm Neutral */
-    --muted: 30 20% 92%;
-    --muted-foreground: 25 10% 45%;
+    /* Muted - Azul Bebê Claro (#c5d9eb) */
+  --muted: 210 40% 85%;
+  --muted-foreground: 25 10% 45%;
 
-    /* Accent - Coral/Peach (warmth, care) */
-    --accent: 15 75% 70%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent - Amarelo Manteiga (#f0ebc1) */
+  --accent: 52 65% 50%; 
+  --accent-foreground: 52 65% 20%; /* Texto escuro para contraste */
 
-    /* Harmonize - Special gradient color */
-    --harmonize: 280 30% 65%;
-    --harmonize-light: 280 40% 85%;
+    /* Harmonize - Lavanda Escurecido para uso em degradê */
+  --harmonize: 244 45% 60%; 
+  --harmonize-light: 244 45% 80%;
 
-    /* Success - Green tones */
+  /* Definição do Gradiente de Texto "Inspirando Equilíbrio" */
+  /* Ele usa from-primary (Lavanda) via-harmonize (Lavanda) to-accent (Amarelo) */
+  --gradient-harmonize: linear-gradient(135deg, hsl(244 38% 80%), hsl(52 59% 85%));
+    
+/* Success - Green tones */
     --success: 145 60% 50%;
     --success-foreground: 0 0% 100%;
 

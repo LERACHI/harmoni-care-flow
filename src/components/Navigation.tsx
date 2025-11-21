@@ -18,16 +18,19 @@ const Navigation = () => {
     }
   };
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Terapeutas", path: "/therapists" },
-    { name: "Loja", path: "/shop" },
-    { name: "Chat", path: "/chat" },
-    { name: "Conteúdos", path: "/content" },
-    { name: "Sobre", path: "/about" },
-    { name: "Vagas", path: "/vagas" },
-    { name: "Contato", path: "/contato" }, // << NOVO ITEM ADICIONADO AQUI
-  ];
+  // NOVO CÓDIGO SUGERIDO PARA Navigation.tsx
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Terapeutas", path: "/therapists" },
+    { name: "Loja", path: "/shop" },
+    { name: "Chat", path: "/chat" },
+    { name: "Conteúdos", path: "/content" },
+    { name: "Sobre", path: "/about" },
+    { name: "Diagnósticos", path: "/diagnosticos" }, // NOVO ITEM INCLUÍDO
+    // GARANTINDO QUE NÃO HÁ MAIS NENHUM ITEM COM PATH: "/vagas" AQUI
+    { name: "Contato", path: "/contato" }, 
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-sm">

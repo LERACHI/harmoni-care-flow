@@ -62,8 +62,8 @@ const Index = () => {
             <div className="animate-slide-up">
               <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
                 Conectando Cuidado,{" "}
-                <span className="bg-gradient-to-r from-primary via-harmonize to-accent bg-clip-text text-transparent">
-                  Inspirando Equilíbrio
+                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+    Inspirando Equilíbrio
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-2">

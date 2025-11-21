@@ -19,7 +19,7 @@ import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import About from "./pages/About";
-import Vagas from "./pages/vagas";
+import Diagnosticos from "./pages/Diagnosticos";
 import Contact from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 
@@ -49,7 +49,7 @@ const AppWrapper = () => {
       <Route path="/admin" element={<Admin />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/about" element={<About />} />
-      <Route path="/vagas" element={<Vagas />} />
+      <Route path="/diagnosticos" element={<Diagnosticos />} />
       <Route path="/contato" element={<Contact />} />
       <Route path="/users" element={<UserList />} />
       <Route path="*" element={<NotFound />} />
