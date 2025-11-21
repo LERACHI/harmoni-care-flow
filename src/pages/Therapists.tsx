@@ -194,7 +194,7 @@ const Therapists = () => {
 
               Nossos{" "}
 
-              <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-solid">
 
                 Terapeutas
 

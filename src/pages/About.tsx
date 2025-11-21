@@ -86,7 +86,7 @@ const About = () => {
               
               <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
                 Conectando você ao seu{" "}
-                <span className="bg-gradient-to-r from-primary via-harmonize to-accent bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-harmonize to-accent bg-clip-text text-solid">
                   bem-estar
                 </span>
               </h1>

@@ -46,7 +46,7 @@ export default function Contato() {
             >
               <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight">
                 Entre em{" "}
-                <span className="bg-gradient-to-r from-primary via-harmonize to-accent bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-harmonize to-accent bg-clip-text text-solid">
                   Contato
                 </span>
               </h1>

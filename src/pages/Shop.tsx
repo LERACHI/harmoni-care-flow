@@ -73,7 +73,7 @@ const Shop = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12 animate-slide-up">
             <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-              Nossa <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-transparent">Loja</span>
+              Nossa <span className="bg-gradient-to-r from-primary to-harmonize bg-clip-text text-solid">Loja</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Produtos e serviços selecionados para seu bem-estar integral

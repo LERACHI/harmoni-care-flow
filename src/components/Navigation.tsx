@@ -78,7 +78,7 @@ const Navigation = () => {
                 </Button>
               </>
             ) : (
-              <Button size="sm" className="bg-gradient-to-r from-primary to-harmonize hover:opacity-90" asChild>
+              <Button size="sm" className="bg-gradient-to-r from-[hsl(244_45%_30%)] to-[hsl(245_50%_25%)] hover:brightness-110 text-white shadow-lg" asChild>
                 <NavLink to="/auth">Entrar</NavLink>
               </Button>
             )}

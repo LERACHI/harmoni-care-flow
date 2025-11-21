@@ -62,24 +62,24 @@ const Index = () => {
             <div className="animate-slide-up">
               <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
                 Conectando Cuidado,{" "}
-                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-solid">
     Inspirando Equilíbrio
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-2">
                 Empowering Well-Being for Everyone
               </p>
-              <p className="text-sm italic text-muted-foreground/80 mb-8">
+              <p className="text-sm italic text-muted-foreground mb-8">
                 Seu caminho para o bem-estar integrado
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-primary to-harmonize hover:opacity-90 text-white shadow-lg"
-                  asChild
-                >
-                  <NavLink to="/therapists">Encontrar Terapeuta</NavLink>
-                </Button>
+  size="lg"
+  className="bg-gradient-to-r from-[hsl(244_45%_30%)] to-[hsl(245_50%_25%)] hover:brightness-110 text-white shadow-lg"
+  asChild
+>
+  <NavLink to="/therapists">Encontrar Terapeuta</NavLink>
+</Button>
                 <Button size="lg" variant="outline" asChild>
                   <NavLink to="/shop">Explorar Loja</NavLink>
                 </Button>

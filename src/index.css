@@ -19,7 +19,7 @@ All colors MUST be HSL.
     --popover-foreground: 25 15% 25%;
 
     /* Primary - Lavanda (#b8b6dc) */
-  --primary: 244 45% 45%; 
+  --primary: 245 55% 45%; 
   --primary-foreground: 0 0% 100%; /* Texto escuro para contraste */
 
     /* Secondary - Verde Pistache (#cbd09e) - Usado para harmonia/suporte */
@@ -28,19 +28,19 @@ All colors MUST be HSL.
 
     /* Muted - Azul Bebê Claro (#c5d9eb) */
   --muted: 210 40% 85%;
-  --muted-foreground: 25 10% 45%;
+  --muted-foreground: 25 10% 20%;
 
     /* Accent - Amarelo Manteiga (#f0ebc1) */
   --accent: 52 65% 50%; 
-  --accent-foreground: 52 65% 20%; /* Texto escuro para contraste */
+  --accent-foreground: 53 63% 7%; /* Texto escuro para contraste */
 
     /* Harmonize - Lavanda Escurecido para uso em degradê */
-  --harmonize: 244 45% 60%; 
-  --harmonize-light: 244 45% 80%;
+  --harmonize: 245 50% 28%; 
+  --harmonize-light: 245 76% 23%;
 
   /* Definição do Gradiente de Texto "Inspirando Equilíbrio" */
   /* Ele usa from-primary (Lavanda) via-harmonize (Lavanda) to-accent (Amarelo) */
-  --gradient-harmonize: linear-gradient(135deg, hsl(244 38% 80%), hsl(52 59% 85%));
+  --gradient-harmonize: linear-gradient(135deg, hsl(245, 76%, 23%), hsl(53, 63%, 7%));
     
 /* Success - Green tones */
     --success: 145 60% 50%;
