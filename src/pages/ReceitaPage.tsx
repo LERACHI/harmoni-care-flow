@@ -6,7 +6,7 @@ import { SiWhatsapp, SiTelegram } from "react-icons/si"; // ícones corretos
 
 import LeiteDouradoImg from "@/assets/LeiteDourado.jpeg";
 import CalmaBarrigaImg from "@/assets/CalmaBarriga.jpeg";
-import TomilhoImg from "@/assets/tomilho.jpeg";
+import TomilhoImg from "@/assets/Tomilho.jpeg";
 import AspargoImg from "@/assets/CremeAspargos.jpeg";
 import BrocolisImg from "@/assets/Brocolis.jpeg";
 import KaphaImg from "@/assets/Kapha.jpeg";
