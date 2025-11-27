@@ -310,7 +310,7 @@ export default function RecipePage() {
       <div className="container mx-auto pt-24 px-4 text-center">
         <p className="text-lg">Receita não encontrada.</p>
         <Button variant="ghost" className="mt-4" onClick={() => navigate("/content#receitas")}>
-          <ArrowLeft className="w-4 h-4 mr-2" /> Voltar
+          <ArrowLeft className="w-4 h-4 mr-2" /> Voltar para Receitas
         </Button>
       </div>
     );
@@ -349,7 +349,7 @@ export default function RecipePage() {
         {/* Botão voltar */}
         <Button variant="ghost" onClick={() => navigate("/content#receitas")} className="mb-6">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
+          Voltar para Receitas
         </Button>
 
         <div className="flex flex-col lg:flex-row gap-12">

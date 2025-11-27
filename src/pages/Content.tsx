@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -234,6 +234,7 @@ const Content = () => {
   const [selectedCategory, setSelectedCategory] = useState("todas");
   const [selectedAuthor, setSelectedAuthor] = useState("todos");
   const [selectedArticle, setSelectedArticle] = useState<typeof articles[number] | null>(null);
+  const location = useLocation();
 
   const baseContent = useMemo(() => {
     if (activeTab === "articles") return articles;
@@ -261,6 +262,16 @@ const Content = () => {
     setSelectedCategory("todas");
     setSelectedAuthor("todos");
   };
+
+  // Ajusta a aba ativa conforme o hash da URL (ex.: #receitas, #artigos)
+  useEffect(() => {
+    const hash = location.hash.toLowerCase();
+    if (hash.includes("receitas")) {
+      setActiveTab("recipes");
+    } else if (hash.includes("artigos")) {
+      setActiveTab("articles");
+    }
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen flex flex-col">
