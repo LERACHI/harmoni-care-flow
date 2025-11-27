@@ -378,8 +378,12 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Junte-se a milhares de pessoas que já encontraram equilíbrio e bem-estar através da HarmoniCare
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-primary to-harmonize hover:opacity-90 text-white shadow-lg">
-            Começar Agora
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-primary to-harmonize hover:opacity-90 text-white shadow-lg"
+            asChild
+          >
+            <NavLink to="/auth">Começar Agora</NavLink>
           </Button>
         </div>
       </section>
