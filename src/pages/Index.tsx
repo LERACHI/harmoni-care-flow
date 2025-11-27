@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-illustration.jpg";
 import { NavLink } from "@/components/NavLink";
-import QuestionarioDiagnostico from "@/components/diagnosticos/QuestionarioDiagnostico";
 
 const features = [
   {
@@ -55,8 +54,7 @@ const features = [
   {
     icon: Stethoscope,
     title: "Encontre Seu Equilíbrio",
-    description:
-      "Responda ao nosso questionário para receber uma análise preliminar do seu bem-estar.",
+    description: "Responda ao nosso questionário para receber uma análise preliminar do seu bem-estar.",
   },
 ];
 
@@ -162,7 +160,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
+            {features.map(feature => (
               <Card
                 key={feature.title}
                 className="border-2 hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
@@ -203,7 +201,6 @@ const Index = () => {
               Somos uma plataforma dedicada a democratizar o acesso a terapias integrativas de qualidade,
               conectando pessoas em busca de equilíbrio com terapeutas experientes e certificados.
             </p>
-
           </div>
         </div>
       </section>
@@ -322,27 +319,33 @@ const Index = () => {
       <section className="px-4 py-20 bg-gradient-to-br from-primary/5 via-harmonize/5 to-accent/5">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Nossa história</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Nossa História</h2>
           </div>
 
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
-              A <strong className="text-foreground">HarmoniCare</strong> nasceu da observação de uma necessidade real:
-              pessoas buscando terapias integrativas enfrentavam dificuldades em encontrar profissionais qualificados e
-              de confiança.
+              A <strong className="text-foreground">HarmoniCare</strong> nasceu para resolver um desafio real: ajudar
+              pessoas a encontrarem terapias integrativas de forma simples, confiável e acolhedora.
             </p>
             <p>
-              Em 2020, nossa fundadora Selma Vilella Maia reuniu uma equipe multidisciplinar para criar uma solução que
-              conectasse terapeutas qualificados com pessoas em busca de bem-estar de forma simples, segura e acessível.
+              Após anos atuando como terapeuta integrativa, Selma Vilella Maia percebeu que muitos pacientes não sabiam
+              por onde começar, sentiam falta de orientação e tinham dificuldade em encontrar profissionais qualificados.
+              Do outro lado, os terapeutas também precisavam de mais visibilidade, apoio e ferramentas adequadas.
             </p>
             <p>
-              Hoje, somos uma comunidade vibrante de milhares de usuários e centenas de terapeutas certificados, todos
-              unidos pelo objetivo comum de promover saúde integral e transformação pessoal. Nossa plataforma vai além
-              de um simples marketplace — somos um ecossistema completo de bem-estar.
+              Em 2025, Selma decidiu transformar essa realidade. Com apoio da pré-incubação de IA do Biopark, criou a
+              HarmoniCare: uma plataforma que acompanha toda a jornada de quem busca bem-estar, autocuidado e equilíbrio.
+            </p>
+            <p>
+              Hoje, somos uma comunidade vibrante formada por usuários e terapeutas certificados de diversas áreas.
+              Oferecemos conteúdo de qualidade, apoio contínuo e um ambiente seguro para quem deseja iniciar ou
+              aprofundar suas terapias integrativas.
+            </p>
+            <p>
+              A HarmoniCare é mais que uma plataforma, é um espaço de cuidado, conexão e transformação.
             </p>
             <p className="text-foreground font-medium">
-              Acreditamos que o acesso ao cuidado holístico é um direito de todos, e trabalhamos todos os dias para
-              tornar essa visão uma realidade.
+              Aqui, você encontra caminhos reais para viver com mais saúde e propósito.
             </p>
           </div>
         </div>

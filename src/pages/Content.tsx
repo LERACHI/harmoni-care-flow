@@ -6,13 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -378,44 +371,81 @@ const Content = () => {
             </TabsContent>
 
             <TabsContent value="articles">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredArticles.map((article, index) => (
-                  <Card
-                    key={article.id}
-                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="h-44 overflow-hidden rounded-t-xl">
+              {selectedArticle ? (
+                <div className="animate-fade-in space-y-4">
+                  <Button variant="ghost" className="px-0 text-primary" onClick={() => setSelectedArticle(null)}>
+                    ← Voltar para artigos
+                  </Button>
+                  <div className="overflow-hidden rounded-3xl bg-white shadow-xl border border-muted/20">
+                    <div className="relative">
                       <img
-                        src={article.image}
-                        alt={article.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        src={selectedArticle.image}
+                        alt={selectedArticle.title}
+                        className="h-[260px] w-full object-cover md:h-[360px]"
                       />
                     </div>
-                    <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="secondary">{article.category}</Badge>
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Calendar className="w-4 h-4" />
-                          <span>{article.date}</span>
+                    <div className="px-6 pb-8 pt-5 space-y-4">
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                        <Badge variant="secondary">{selectedArticle.category}</Badge>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" /> {selectedArticle.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <UserRound className="w-4 h-4" /> {selectedArticle.author}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl font-semibold leading-tight text-foreground">
+                        {selectedArticle.title}
+                      </h2>
+                      <p className="text-base text-foreground font-medium">{selectedArticle.excerpt}</p>
+                      <div className="space-y-4 text-muted-foreground leading-relaxed">
+                        {selectedArticle.body.map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredArticles.map((article, index) => (
+                    <Card
+                      key={article.id}
+                      className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="h-44 overflow-hidden rounded-t-xl">
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <CardHeader>
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge variant="secondary">{article.category}</Badge>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Calendar className="w-4 h-4" />
+                            <span>{article.date}</span>
+                          </div>
                         </div>
-                      </div>
-                      <CardTitle className="text-lg mb-2">{article.title}</CardTitle>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <UserRound className="w-4 h-4" />
-                        <span>{article.author}</span>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground mb-4">{article.excerpt}</p>
-                      <Button variant="outline" className="w-full" onClick={() => setSelectedArticle(article)}>
-                        <FileText className="w-4 h-4 mr-2" />
-                        Ler Artigo
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                        <CardTitle className="text-lg mb-2">{article.title}</CardTitle>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <UserRound className="w-4 h-4" />
+                          <span>{article.author}</span>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">{article.excerpt}</p>
+                        <Button variant="outline" className="w-full" onClick={() => setSelectedArticle(article)}>
+                          <FileText className="w-4 h-4 mr-2" />
+                          Ler Artigo
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </TabsContent>
 
             <TabsContent value="recipes">
@@ -454,42 +484,6 @@ const Content = () => {
               </div>
             </TabsContent>
           </Tabs>
-
-          <Dialog open={!!selectedArticle} onOpenChange={() => setSelectedArticle(null)}>
-            <DialogContent className="max-w-3xl">
-              {selectedArticle && (
-                <>
-                  <div className="overflow-hidden rounded-2xl mb-4">
-                    <img
-                      src={selectedArticle.image}
-                      alt={selectedArticle.title}
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                  <DialogHeader className="space-y-2">
-                    <DialogTitle className="text-2xl">{selectedArticle.title}</DialogTitle>
-                    <DialogDescription className="flex items-center gap-3 text-sm">
-                      <Badge variant="secondary">{selectedArticle.category}</Badge>
-                      <span className="text-muted-foreground flex items-center gap-1">
-                        <Calendar className="w-4 h-4" /> {selectedArticle.date}
-                      </span>
-                      <span className="text-muted-foreground flex items-center gap-1">
-                        <UserRound className="w-4 h-4" /> {selectedArticle.author}
-                      </span>
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    <p className="text-base text-foreground font-medium">
-                      {selectedArticle.excerpt}
-                    </p>
-                    {selectedArticle.body.map((paragraph, idx) => (
-                      <p key={idx}>{paragraph}</p>
-                    ))}
-                  </div>
-                </>
-              )}
-            </DialogContent>
-          </Dialog>
         </div>
       </main>
 
