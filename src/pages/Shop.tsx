@@ -10,7 +10,6 @@ import ConsultaIndividualdeReiki from "@/assets/reiki.jpeg";
 import KitdeOleosEssenciais from "@/assets/oleo.jpeg";
 import NeijingImage from "@/assets/Neijing.jpeg";
 import HuohouImage from "@/assets/Huohou.jpeg";
-import PotionImage from "@/assets/Potion.jpeg";
 import MapaAstralImage from "@/assets/mapa.jpeg";
 import { useMemo, useState } from "react";
 
@@ -105,17 +104,6 @@ const Shop = () => {
     },
     {
       id: 9,
-      name: "Mapa de Jogo: Potion Craft",
-      category: "Mapas",
-      price: 189,
-      rating: 4.8,
-      image: PotionImage,
-      description:
-        "Tabuleiro visual para guiar a fabricação de poções movendo o marcador pela rota correta.",
-      author: "Studio Potion",
-    },
-    {
-      id: 10,
       name: "Mapa Astral Alquímico",
       category: "Mapas",
       price: 279,
