@@ -302,7 +302,7 @@ const Content = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full bg-white text-foreground shadow-sm">
                     <SelectValue placeholder="Filtrar por categoria" />
                   </SelectTrigger>
                   <SelectContent position="popper" sideOffset={6} className="max-h-64">
@@ -316,7 +316,7 @@ const Content = () => {
                 </Select>
 
                 <Select value={selectedAuthor} onValueChange={setSelectedAuthor}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full bg-white text-foreground shadow-sm">
                     <SelectValue placeholder="Filtrar por autor" />
                   </SelectTrigger>
                   <SelectContent position="popper" sideOffset={6} className="max-h-64">
@@ -329,7 +329,11 @@ const Content = () => {
                   </SelectContent>
                 </Select>
 
-                <Button variant="outline" onClick={resetFilters}>
+                <Button
+                  variant="outline"
+                  className="bg-white text-foreground hover:bg-white/90 shadow-sm border"
+                  onClick={resetFilters}
+                >
                   Limpar filtros
                 </Button>
               </div>

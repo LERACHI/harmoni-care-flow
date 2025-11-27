@@ -47,12 +47,6 @@ const features = [
     description: "Cada pessoa é única, e seu tratamento também",
   },
   {
-    icon: Briefcase,
-    title: "Envie sua Candidatura",
-    description:
-      "Estamos em busca de terapeutas, profissionais de bem-estar e criadores apaixonados por cuidado e equilíbrio.",
-  },
-  {
     icon: Users2Icon,
     title: "Faça parte da nossa Comunidade",
     description:
@@ -105,10 +99,10 @@ const values = [
 ];
 
 const stats = [
-  { number: "10k+", label: "Usuários Ativos" },
-  { number: "500+", label: "Terapeutas Certificados" },
-  { number: "98%", label: "Satisfação" },
-  { number: "50k+", label: "Sessões Realizadas" },
+  { label: "Usuários Ativos" },
+  { label: "Terapeutas Certificados" },
+  { label: "Satisfação" },
+  { label: "Sessões Realizadas" },
 ];
 
 const team = [
