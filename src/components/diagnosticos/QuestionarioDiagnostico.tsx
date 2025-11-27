@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 // Imports do Firebase mantidos, mas a lógica de inicialização é ajustada para SIMULAR no localhost.
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, User } from 'firebase/auth';
@@ -199,6 +199,8 @@ declare const __firebase_config: string | undefined;
 declare const __initial_auth_token: string | undefined;
 
 const QuestionarioDiagnostico: React.FC = () => {
+  const resultRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(1);
   const [personalData, setPersonalData] = useState<PersonalData>({
     nome: '', telefone: '', idade: '', sintoma: '', tempoDesequilibrio: '',
@@ -266,6 +268,13 @@ const QuestionarioDiagnostico: React.FC = () => {
 
   const handleGunaChange = (questionId: string, guna: string) => {
     setGunaAnswers(prev => ({ ...prev, [questionId]: guna }));
+  };
+
+  const handleDownloadResult = () => {
+    // Usa o diálogo nativo de impressão para permitir salvar como PDF ou imagem.
+    if (resultRef.current) {
+      window.print();
+    }
   };
 
   // Função para salvar - MODO SIMULAÇÃO
@@ -354,7 +363,7 @@ const QuestionarioDiagnostico: React.FC = () => {
   // Etapa 3: Avaliação da Constituição Mental (Gunas)
   const renderStep3 = () => (
     <div className="space-y-6">
-      <h2 className="text-xl font-semibold text-teal-700 border-b pb-2 mb-4">Etapa 3: Avaliação da Constituição Mental (Sattwa, Rajas, Tamas)</h2>
+      <h2 className="text-xl font-semibold text-teal-700 border-b pb-2 mb-4">Etapa 3: Avaliação da Constituição Mental</h2>
       <p className="text-gray-600">Selecione a opção que melhor descreve seu estado mental e hábitos. Responda a todas as 6 perguntas.</p>
       <div className="space-y-8">
         {gunaQuestions.map(q => (
@@ -376,10 +385,22 @@ const QuestionarioDiagnostico: React.FC = () => {
   const predominantDosha = useMemo(() => getPredominantResult(doshaScores), [doshaScores]);
   const predominantGuna = useMemo(() => getPredominantResult(gunaScores), [gunaScores]);
   const doshaRecommendation = useMemo(() => getInitialRecommendation(predominantDosha), [predominantDosha]);
+  const formatGunaLabel = useCallback((key: string) => {
+    const map: Record<string, string> = { Sattwa: 'Perfil 1', Rajas: 'Perfil 2', Tamas: 'Perfil 3' };
+    return map[key.trim()] || key;
+  }, []);
+
+  useEffect(() => {
+    containerRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [step]);
+  const formattedGunaPredominant = useMemo(
+    () => predominantGuna.split('/').map(part => formatGunaLabel(part)).join(' / '),
+    [predominantGuna, formatGunaLabel],
+  );
 
   // Etapa 4: Resultado Final
   const renderStep4 = () => (
-    <div className="space-y-8">
+    <div className="space-y-8" ref={resultRef}>
       {/* 1. TÍTULO DE CONCLUSÃO */}
       <div className="text-center space-y-2 pb-4 border-b border-gray-200">
         <h2 className="text-3xl font-extrabold text-teal-700">Análise Preliminar Concluída!</h2>
@@ -410,7 +431,13 @@ const QuestionarioDiagnostico: React.FC = () => {
       </div>
       
       {/* 5. RESULTADO DOS GUNAS (Seção extra, pois estava no original) */}
-      <ResultCard title="Pontuação dos Gunas (Mente)" scores={gunaScores} predominant={predominantGuna} totalQuestions={gunaQuestions.length} />
+      <ResultCard
+        title="Pontuação das Respostas Mentais"
+        scores={gunaScores}
+        predominant={formattedGunaPredominant}
+        totalQuestions={gunaQuestions.length}
+        labelFormatter={formatGunaLabel}
+      />
 
       {/* 6. PRÓXIMOS PASSOS E BOTÕES */}
       <div className="pt-6 border-t mt-6">
@@ -428,12 +455,15 @@ const QuestionarioDiagnostico: React.FC = () => {
           </div>
         )}
         
-        <div className="flex justify-between">
+        <div className="flex flex-wrap gap-3 justify-between">
           <Button onClick={handleRestart} variant="secondary" className="bg-red-500 hover:bg-red-600 text-white">
             Iniciar Novo Diagnóstico
           </Button>
           <Button onClick={handleSaveResult} disabled={isLoading} className="bg-teal-600 hover:bg-teal-700">
             {isLoading ? 'Simulando Salvamento...' : isSimulationMode ? 'Ver Resultados no Console' : 'Salvar Resultado'}
+          </Button>
+          <Button onClick={handleDownloadResult} className="bg-gray-800 hover:bg-gray-900 text-white">
+            Salvar resultado como PDF/Imagem
           </Button>
         </div>
       </div>
@@ -454,7 +484,7 @@ const QuestionarioDiagnostico: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center p-4 sm:p-6 lg:p-8 min-h-screen">
+    <div className="flex justify-center items-center p-4 sm:p-6 lg:p-8 min-h-screen" ref={containerRef}>
       <div className="bg-white shadow-2xl rounded-3xl p-6 sm:p-10 border border-gray-100 w-full max-w-4xl">
         <h1 className="text-3xl font-extrabold text-gray-800 mb-2 text-center">Questionário Diagnóstico Ayurvédico</h1>
         <p className="text-center text-gray-500 mb-6">4 Etapas para descobrir seus Doshas e Gunas.</p>
@@ -523,7 +553,7 @@ const QuestionBlock: React.FC<{ question: Question; answers: { [key: string]: st
   const isDosha = type === 'dosha';
   const colorMap = isDosha ? { Vatta: 'bg-indigo-50 border-indigo-300', Pitta: 'bg-red-50 border-red-300', Kapha: 'bg-green-50 border-green-300' }
                          : { Sattwa: 'bg-blue-50 border-blue-300', Rajas: 'bg-yellow-50 border-yellow-300', Tamas: 'bg-gray-50 border-gray-300' };
-  const labelMap = isDosha ? { Vatta: 'Vata', Pitta: 'Pitta', Kapha: 'Kapha' } : { Sattwa: 'Sattwa', Rajas: 'Rajas', Tamas: 'Tamas' };
+  const labelMap = isDosha ? { Vatta: '', Pitta: '', Kapha: '' } : { Sattwa: '', Rajas: '', Tamas: '' };
 
   return (
     <div className="p-4 border border-gray-200 rounded-2xl shadow-sm">
@@ -532,7 +562,7 @@ const QuestionBlock: React.FC<{ question: Question; answers: { [key: string]: st
         {Object.entries(question.options).map(([key, description]) => {
           const isSelected = answers[question.id] === key;
           const bgClass = colorMap[key as keyof typeof colorMap] || 'bg-gray-100 border-gray-300';
-          const label = labelMap[key as keyof typeof labelMap] || key;
+          const label = labelMap[key as keyof typeof labelMap] || '';
 
           return (
             <div
@@ -542,7 +572,7 @@ const QuestionBlock: React.FC<{ question: Question; answers: { [key: string]: st
                          flex flex-col`}
               onClick={() => onSelect(question.id, key)}
             >
-              <span className="font-bold text-lg mb-1 text-gray-900">{label}</span>
+              {label && <span className="font-bold text-lg mb-1 text-gray-900">{label}</span>}
               <p className="text-sm text-gray-700 flex-grow">{description}</p>
             </div>
           );
@@ -620,7 +650,13 @@ const AnamneseItem: React.FC<{ label: string, value: string }> = ({ label, value
 
 
 // MANTIDO DO ARQUIVO ANTERIOR PARA OS GUNAS (SEÇÃO EXTRA)
-const ResultCard: React.FC<{ title: string, scores: DoshaScores | GunaScores, predominant: string, totalQuestions: number }> = ({ title, scores, predominant, totalQuestions }) => {
+const ResultCard: React.FC<{
+  title: string;
+  scores: DoshaScores | GunaScores;
+  predominant: string;
+  totalQuestions: number;
+  labelFormatter?: (key: string) => string;
+}> = ({ title, scores, predominant, totalQuestions, labelFormatter }) => {
   const scoreEntries = Object.entries(scores).sort(([, a], [, b]) => b - a);
   const maxScorePossible = totalQuestions;
 
@@ -631,14 +667,19 @@ const ResultCard: React.FC<{ title: string, scores: DoshaScores | GunaScores, pr
       {/* Predominância */}
       <div className="mb-4 p-4 bg-teal-50 border-l-4 border-teal-500 rounded-r-xl">
         <p className="text-lg font-semibold text-teal-800">Predominância Encontrada:</p>
-        <p className="text-2xl font-extrabold text-teal-900 mt-1">{predominant}</p>
+        <p className="text-2xl font-extrabold text-teal-900 mt-1">
+          {predominant
+            .split("/")
+            .map(part => (labelFormatter ? labelFormatter(part.trim()) : part.trim()))
+            .join(" / ")}
+        </p>
       </div>
 
       {/* Detalhe da Pontuação */}
       <div className="space-y-3">
         {scoreEntries.map(([key, value]) => (
           <div key={key} className="flex justify-between items-center text-gray-700">
-            <span className="font-medium w-1/4">{key}</span>
+            <span className="font-medium w-1/4">{labelFormatter ? labelFormatter(key) : key}</span>
             <div className="flex items-center space-x-3 w-3/4">
               <div className="flex-grow bg-gray-200 rounded-full h-3">
                 <div

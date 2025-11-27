@@ -38,11 +38,6 @@ const Footer = () => {
                   Loja
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/chat" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Chat
-                </NavLink>
-              </li>
             </ul>
           </div>
 
@@ -61,8 +56,8 @@ const Footer = () => {
       </NavLink>
     </li>
     <li>
-      <NavLink to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-        Sobre Nós
+      <NavLink to="/comunidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+        Comunidade
       </NavLink>
     </li>
     <li>

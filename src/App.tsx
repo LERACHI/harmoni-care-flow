@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // 1. Importação do Hook de Usabilidade
 import useScrollToTop from "@/hooks/useScrollToTop"; 
@@ -13,14 +13,15 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 import Index from "./pages/Index";
 import Therapists from "./pages/Therapists";
 import Shop from "./pages/Shop";
-import Chat from "./pages/Chat";
 import Content from "./pages/Content";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
-import About from "./pages/About";
 import Diagnosticos from "./pages/Diagnosticos";
 import Contact from "./pages/Contato";
+import TherapistProfile from "@/pages/TherapistProfile";
+import Community from "@/pages/Community";
+import ReceitaPage from "@/pages/ReceitaPage";
 import NotFound from "./pages/NotFound";
 
 import { AuthProvider } from "@/hooks/useAuth";
@@ -43,15 +44,17 @@ const AppWrapper = () => {
       <Route path="/" element={<Index />} />
       <Route path="/therapists" element={<Therapists />} />
       <Route path="/shop" element={<Shop />} />
-      <Route path="/chat" element={<Chat />} />
       <Route path="/content" element={<Content />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/auth" element={<Auth />} />
-      <Route path="/about" element={<About />} />
       <Route path="/diagnosticos" element={<Diagnosticos />} />
       <Route path="/contato" element={<Contact />} />
       <Route path="/users" element={<UserList />} />
+      <Route path="/terapeuta/:id" element={<TherapistProfile />} />
+      <Route path="/therapist/:id" element={<TherapistProfile />} />
+      <Route path="/comunidade" element={<Community />} />
+      <Route path="/receita/:id" element={<ReceitaPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

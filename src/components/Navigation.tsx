@@ -24,9 +24,8 @@ const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "Terapeutas", path: "/therapists" },
     { name: "Loja", path: "/shop" },
-    { name: "Chat", path: "/chat" },
     { name: "Conteúdos", path: "/content" },
-    { name: "Sobre", path: "/about" },
+    { name: "Comunidade", path: "/comunidade" },
     { name: "Diagnósticos", path: "/diagnosticos" }, // NOVO ITEM INCLUÍDO
     // GARANTINDO QUE NÃO HÁ MAIS NENHUM ITEM COM PATH: "/vagas" AQUI
     { name: "Contato", path: "/contato" }, 

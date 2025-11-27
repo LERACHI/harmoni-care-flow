@@ -13,36 +13,29 @@ const Admin = () => {
   ];
 
   const requirements = [
-    {
+       {
       id: 1,
-      title: "Sistema de Chat em Tempo Real",
-      priority: "high",
-      status: "in-progress",
-      description: "Implementar chat com suporte a texto, imagens, vídeos e PDFs",
-    },
-    {
-      id: 2,
       title: "Upload de Mídias",
       priority: "high",
       status: "pending",
       description: "Sistema de upload e gestão de vídeos, imagens e documentos",
     },
     {
-      id: 3,
+      id: 2,
       title: "Loja Virtual",
       priority: "medium",
       status: "in-progress",
       description: "E-commerce para produtos e serviços de terapias",
     },
     {
-      id: 4,
+      id: 3,
       title: "Sistema de Autenticação",
       priority: "high",
       status: "completed",
       description: "Login e cadastro para pacientes e terapeutas",
     },
     {
-      id: 5,
+      id: 4,
       title: "Painel Administrativo",
       priority: "medium",
       status: "in-progress",
