@@ -26,64 +26,93 @@ type Post = {
 export default function CommunityPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [usingFallback, setUsingFallback] = useState(false);
+
+  const fallbackPosts: Post[] = [
+    {
+      id: 9991,
+      content: "Bem-vinda(o)! Este é um post de demonstração enquanto conectamos ao Supabase.",
+      image_url: null,
+      username: "Equipe HarmoniCare",
+      likes: 12,
+      created_at: new Date().toISOString(),
+      comments: [
+        {
+          id: 99911,
+          post_id: 9991,
+          text: "Comente aqui e compartilhe sua experiência.",
+          username: "Moderação",
+          created_at: new Date().toISOString(),
+        },
+      ],
+    },
+  ];
 
   const fetchPosts = async () => {
-    const { data, error } = await supabase
-      .from("posts")
-      .select("*, comments(*)")
-      .order("created_at", { ascending: false });
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*, comments(*)")
+        .order("created_at", { ascending: false });
 
-    if (error) {
-      console.error("Erro ao carregar posts", error);
-      return;
+      if (error) {
+        throw error;
+      }
+
+      setPosts((data as Post[]) || []);
+      setUsingFallback(false);
+    } catch (err) {
+      console.error("Erro ao carregar posts; usando conteúdo local.", err);
+      setPosts(fallbackPosts);
+      setUsingFallback(true);
     }
-
-    setPosts((data as Post[]) || []);
   };
 
   useEffect(() => {
     fetchPosts();
 
-    const channel = supabase
-      .channel("community-feed")
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "posts" },
-        payload => {
-          const newPost = payload.new as Post;
-          setPosts(prev => [newPost, ...prev]);
-        },
-      )
-      .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "posts" },
-        payload => {
-          const updated = payload.new as Post;
-          setPosts(prev =>
-            prev.map(post => (post.id === updated.id ? { ...post, ...updated } : post)),
-          );
-        },
-      )
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "comments" },
-        payload => {
-          const newComment = payload.new as Comment;
-          setPosts(prev =>
-            prev.map(post =>
-              post.id === newComment.post_id
-                ? { ...post, comments: [...(post.comments || []), newComment] }
-                : post,
-            ),
-          );
-        },
-      )
-      .subscribe();
+    if (!usingFallback) {
+      const channel = supabase
+        .channel("community-feed")
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "posts" },
+          payload => {
+            const newPost = payload.new as Post;
+            setPosts(prev => [newPost, ...prev]);
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "UPDATE", schema: "public", table: "posts" },
+          payload => {
+            const updated = payload.new as Post;
+            setPosts(prev =>
+              prev.map(post => (post.id === updated.id ? { ...post, ...updated } : post)),
+            );
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "comments" },
+          payload => {
+            const newComment = payload.new as Comment;
+            setPosts(prev =>
+              prev.map(post =>
+                post.id === newComment.post_id
+                  ? { ...post, comments: [...(post.comments || []), newComment] }
+                  : post,
+              ),
+            );
+          },
+        )
+        .subscribe();
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, []);
+      return () => {
+        supabase.removeChannel(channel);
+      };
+    }
+  }, [usingFallback]);
 
   const handlePost = async (content: string, image: File | null) => {
     if (!content.trim() && !image) return;
