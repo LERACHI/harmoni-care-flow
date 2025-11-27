@@ -26,7 +26,7 @@ interface Props {
 
 export default function PostCard({ post, handleLike, handleAddComment }: Props) {
   return (
-    <div className="p-4 rounded-xl shadow-md bg-background">
+    <div className="p-5 rounded-2xl bg-white shadow-xl shadow-primary/20 border border-primary/10 transition-transform duration-200 hover:-translate-y-0.5">
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold">{post.username}</span>
         <span className="text-sm text-muted-foreground">{post.likes} likes</span>

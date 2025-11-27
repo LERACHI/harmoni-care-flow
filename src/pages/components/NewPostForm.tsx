@@ -18,9 +18,9 @@ export default function NewPostForm({ handlePost, uploading }: Props) {
   };
 
   return (
-    <div className="mb-8 p-4 rounded-xl shadow-md bg-background">
+    <div className="mb-8 p-6 rounded-2xl bg-white shadow-xl shadow-primary/15 border border-primary/10 space-y-3">
       <textarea
-        className="w-full p-3 border rounded-md mb-2 resize-none"
+        className="w-full p-3 border border-muted rounded-lg bg-white mb-2 resize-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40"
         placeholder="Compartilhe algo com a comunidade..."
         value={content}
         onChange={e => setContent(e.target.value)}
@@ -33,7 +33,7 @@ export default function NewPostForm({ handlePost, uploading }: Props) {
         />
       )}
       <div className="flex items-center justify-between">
-        <label className="flex items-center gap-2 cursor-pointer text-sm text-muted-foreground">
+        <label className="flex items-center gap-2 cursor-pointer text-sm text-muted-foreground hover:text-foreground">
           <Upload className="w-4 h-4" />
           Adicionar imagem
           <input
@@ -43,7 +43,7 @@ export default function NewPostForm({ handlePost, uploading }: Props) {
             onChange={e => e.target.files && setImage(e.target.files[0])}
           />
         </label>
-        <Button onClick={onSubmit} disabled={uploading}>
+        <Button onClick={onSubmit} disabled={uploading} className="shadow-lg shadow-primary/25">
           {uploading ? "Enviando..." : "Postar"}
         </Button>
       </div>

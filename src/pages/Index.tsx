@@ -98,13 +98,6 @@ const values = [
   },
 ];
 
-const stats = [
-  { label: "Usuários Ativos" },
-  { label: "Terapeutas Certificados" },
-  { label: "Satisfação" },
-  { label: "Sessões Realizadas" },
-];
-
 const team = [
   {
     name: "Selma Vilella Maia",
@@ -211,16 +204,6 @@ const Index = () => {
               conectando pessoas em busca de equilíbrio com terapeutas experientes e certificados.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
-              {stats.map((stat, index) => (
-                <div key={stat.label} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-primary to-harmonize bg-clip-text text-transparent mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

@@ -50,16 +50,40 @@ export default function CommunityPage() {
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: postsData, error: postsError } = await supabase
         .from("posts")
-        .select("*, comments(*)")
+        .select("*")
         .order("created_at", { ascending: false });
 
-      if (error) {
-        throw error;
+      if (postsError) {
+        throw postsError;
       }
 
-      setPosts((data as Post[]) || []);
+      const postIds = (postsData || []).map(post => post.id);
+      let commentsByPost: Record<number, Comment[]> = {};
+
+      if (postIds.length) {
+        const { data: commentsData, error: commentsError } = await supabase
+          .from("comments")
+          .select("*")
+          .in("post_id", postIds);
+
+        if (commentsError) {
+          throw commentsError;
+        }
+
+        commentsByPost = (commentsData || []).reduce<Record<number, Comment[]>>((acc, comment) => {
+          acc[comment.post_id] = [...(acc[comment.post_id] || []), comment];
+          return acc;
+        }, {});
+      }
+
+      const hydratedPosts = (postsData as Post[]).map(post => ({
+        ...post,
+        comments: commentsByPost[post.id] || [],
+      }));
+
+      setPosts(hydratedPosts);
       setUsingFallback(false);
     } catch (err) {
       console.error("Erro ao carregar posts; usando conteúdo local.", err);
@@ -129,7 +153,7 @@ export default function CommunityPage() {
       }
     }
 
-    await supabase.from("posts").insert([{ username: "Voce", content, image_url: imageUrl }]);
+    await supabase.from("posts").insert([{ username: "Você", content, image_url: imageUrl }]);
     setUploading(false);
   };
 
@@ -139,7 +163,7 @@ export default function CommunityPage() {
 
   const handleAddComment = async (postId: number, text: string) => {
     if (!text.trim()) return;
-    await supabase.from("comments").insert([{ post_id: postId, username: "Voce", text }]);
+    await supabase.from("comments").insert([{ post_id: postId, username: "Você", text }]);
   };
 
   const sortedPosts = useMemo(
